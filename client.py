@@ -53,7 +53,7 @@ class FlowerClient(fl.client.NumPyClient):
             raise ValueError("Model not initialized!")
 
         self.model.train()
-        self.model.set_parameters(parameters, config)
+        self.model.module.load_state_dict(parameters)
 
         running_loss = 0.0
         for inputs, labels in self.train_loader:
@@ -99,7 +99,7 @@ class FlowerClient(fl.client.NumPyClient):
         return self.model.get_parameters(config), avg_val_loss, accuracy
 
 # Take input from the user for the folder path
-train_data_path = r"./cancer/lol"
+train_data_path = r"./lol"
 
 # Create multiple Flower clients with the provided folder path
 num_clients = 5

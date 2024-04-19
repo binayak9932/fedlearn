@@ -51,8 +51,8 @@ class FlowerServer:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
-        train_data = datasets.ImageFolder(root='./archive/train', transform=transform_train)
-        val_data = datasets.ImageFolder(root='./archive/train', transform=transform_val)
+        train_data = datasets.ImageFolder(root='./archivetest/train', transform=transform_train)
+        val_data = datasets.ImageFolder(root='./archivetest/train', transform=transform_val)
 
         batch_size = 256
         train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=4)
@@ -124,7 +124,7 @@ server = FlowerServer()
 # Define the strategy (example with FedAvg)
 strategy = fl.server.strategy.FedAvg(
     fraction_fit=0.1,
-    min_available_clients=3,
+    min_available_clients=2,
     # Add other parameters as needed (e.g., for metric aggregation)
 )
 

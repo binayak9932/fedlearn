@@ -99,7 +99,7 @@ class FlowerClient(fl.client.NumPyClient):
         return self.model.get_parameters(config), avg_val_loss, accuracy
 
 # Take input from the user for the folder path
-train_data_path = r"./cancer/lol"
+train_data_path = "./lol"
 
 # Create multiple Flower clients with the provided folder path
 num_clients = 5
