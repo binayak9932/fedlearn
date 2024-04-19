@@ -10,6 +10,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+
 # Define the server
 class FlowerServer:
     def __init__(self):
@@ -116,6 +118,22 @@ class FlowerServer:
 
         return self.model.get_parameters(), avg_val_loss, accuracy, matrix
 
-# Create a Flower server
+# Create a Flower server instance
 server = FlowerServer()
-fl.server.start_server()
+
+# Define the strategy (example with FedAvg)
+strategy = fl.server.strategy.FedAvg(
+    fraction_fit=0.1,
+    min_available_clients=3,
+    # Add other parameters as needed (e.g., for metric aggregation)
+)
+
+# Define server configuration
+server_config = fl.server.ServerConfig(num_rounds=3)
+
+# Start Flower server with ServerConfig object
+fl.server.start_server(
+    server_address="[::]:8080",
+    config=server_config,
+    strategy=strategy,
+)

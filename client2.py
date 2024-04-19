@@ -78,7 +78,7 @@ class FlowerClient(fl.client.NumPyClient):
         return self.model.get_parameters(), avg_val_loss, accuracy
 
 # Take input from the user for the folder path
-train_data_path = r"G:\cancer\lol"
+train_data_path = r"./cancer/lol"
 
 # Create a Flower client with the provided folder path
 client = FlowerClient(train_data_path)
