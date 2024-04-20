@@ -22,8 +22,8 @@ def load_images_from_folder(folder):
                 labels.append(label)
     return np.array(images), np.array(labels)
 
-train_images, train_labels = load_images_from_folder('./xray_dataset_covid19/train')
-test_images, test_labels = load_images_from_folder('./xray_dataset_covid19/test')
+train_images, train_labels = load_images_from_folder('./train')
+test_images, test_labels = load_images_from_folder('./test')
 
 def train_local_model(train_images, train_labels):
     # Define your model architecture
